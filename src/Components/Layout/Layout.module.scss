@@ -1,0 +1,52 @@
+@import "/src/App.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  background-color: $background-color;
+  color: $text-color;
+  font-family: $secondary-font;
+}
+
+h1,
+h2 {
+  font-family: $primary-font;
+  font-weight: bold;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+  font-family: $secondary-font;
+  transition: .2s;
+
+  &:hover,
+  &:active {
+    color: $shadow-color;
+  }
+}
+
+// button {
+//   background-color: $primary-color;
+//   color: #ffffff;
+//   font-family: $secondary-font;
+//   font-weight: bold;
+//   border: none;
+//   border-radius: 3px;
+//   padding: 8px 15px;
+//   transition: background-color 0.3s ease;
+//   cursor: pointer;
+
+//   &:hover {
+//     background-color: $shadow-color;
+//   }
+
+//   &:focus {
+//     outline: none;
+//   }
+// }

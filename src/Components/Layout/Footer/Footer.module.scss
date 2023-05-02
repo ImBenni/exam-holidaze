@@ -1,0 +1,15 @@
+@import "/src/App.scss";
+
+.footer {
+    background-color: rgba(#000000, 0.8);
+    padding: 3rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .copyRight {
+    font-size: 0.8rem;
+    color: rgba(#ffffff, 0.8);
+  }
+  
