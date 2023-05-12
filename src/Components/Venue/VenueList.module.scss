@@ -1,0 +1,160 @@
+@import "/src/App.scss";
+
+.venueCard {
+  background-color: #f6f6f6;
+  color: black;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  max-width: 325px;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.02);
+    color: black;
+  }
+}
+
+.imgContent {
+  width: 325px;
+  height: 240px;
+  // padding-bottom: 80%;
+  // position: relative;
+  overflow: hidden;
+
+  .venueImage {
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+}
+
+.cardContent {
+  padding: 1rem;
+
+  .titleAndRating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h4 {
+      font-size: 1rem;
+      margin: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 100%;
+
+      // @media (max-width: 600px) {
+      //   font-size: 0.8rem;
+      // }
+    }
+  }
+
+  .ratingContent {
+    display: flex;
+
+    .ratingText {
+      color: #cccccc;
+
+      &.hasRating {
+        color: $shadow-color;
+      }
+    }
+  }
+  .subTitle {
+    color: rgba(0, 0, 0, 0.7);
+    margin-top: 0;
+    font-size: 0.9rem;
+
+    margin-bottom: 2rem;
+  }
+
+  p {
+    font-size: 1rem;
+    margin: 0;
+
+    // @media (max-width: 600px) {
+    //   font-size: 0.9rem;
+    // }
+  }
+}
+
+// Loading / Placeholder
+
+// .placeholderCard {
+//   max-width: 100%;
+//   height: 12vw;
+//   transition: height .3s;
+// }
+
+// .placeholderImage {
+//   background-color: #ccc;
+//   border-radius: 8px;
+//   width: 11vw;
+//   transition: width .3s;
+// }
+
+// @media (max-width: 1880px) {
+//   .placeholderCard {
+//     height: 14vw;
+//   }
+//   .placeholderImage {
+//     width: 12.5vw;
+//   }
+// }
+
+// @media (max-width: 1640px) {
+//   .placeholderCard {
+//     height: 16vw;
+//   }
+//   .placeholderImage {
+//     width: 15vw;
+//   }
+// }
+
+// @media (max-width: 1400px) {
+//   .placeholderCard {
+//     height: 18vw;
+//   }
+//   .placeholderImage {
+//     width: 16vw;
+//   }
+// }
+
+// @media (max-width: 1125px) {
+//   .placeholderCard {
+//     height: 22vw;
+//   }
+//   .placeholderImage {
+//     width: 20vw;
+//   }
+// }
+
+// @media (max-width: 950px) {
+//   .placeholderCard {
+//     height: 29vw;
+//   }
+//   .placeholderImage {
+//     width: 26.5vw;
+//   }
+// }
+
+// @media (max-width: 550px) {
+//   .placeholderCard {
+//     height: 56vw;
+//   }
+//   .placeholderImage {
+//     width: 54vw;
+//   }
+// }
+
+// .loadingPlaceholders {
+//   display: flex;
+//   flex-wrap: wrap;
+// }

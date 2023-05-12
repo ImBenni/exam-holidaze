@@ -1,0 +1,20 @@
+.sortContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+  
+    label {
+      margin-right: 0.5rem;
+    }
+  
+    select {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      outline: none;
+      cursor: pointer;
+    }
+  }
+  
