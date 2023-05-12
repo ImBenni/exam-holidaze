@@ -1,13 +1,25 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Header.module.scss";
 
 function Header() {
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const navigate = useNavigate();
+  const isLoggedIn = !!localStorage.getItem("accessToken");
 
-  const handleDocumentClick = (event) => {
+
+const handleDocumentClick = (event) => {
+  const profileButton = document.querySelector(`.${styles.profileButton}`);
+  const dropdownMenu = document.querySelector(`.${styles.dropdownMenu}`);
+
+  if (
+    profileButton && !profileButton.contains(event.target) &&
+    dropdownMenu && !dropdownMenu.contains(event.target)
+  ) {
     setDropdownVisible(false);
-  };
+  }
+};
+
 
   useEffect(() => {
     document.addEventListener("click", handleDocumentClick, true);
@@ -16,7 +28,11 @@ function Header() {
     };
   }, []);
 
-  const isLoggedIn = false; // Temporary boolean
+  const handleLogout = () => {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('profile');
+    navigate("/login");
+  };
 
   const toggleDropdown = () => {
     setDropdownVisible(!dropdownVisible);
@@ -52,7 +68,7 @@ function Header() {
                     <Link to="/profile">Profile</Link>
                   </li>
                   <li>
-                    <Link to="/logout">Log Out</Link>
+                    <Link onClick={handleLogout}>Log Out</Link>
                   </li>
                 </>
               ) : (

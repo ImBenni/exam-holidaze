@@ -31,22 +31,22 @@ a {
   }
 }
 
-// button {
-//   background-color: $primary-color;
-//   color: #ffffff;
-//   font-family: $secondary-font;
-//   font-weight: bold;
-//   border: none;
-//   border-radius: 3px;
-//   padding: 8px 15px;
-//   transition: background-color 0.3s ease;
-//   cursor: pointer;
+button {
+  background-color: $primary-color;
+  color: #ffffff;
+  font-family: $secondary-font;
+  font-weight: bold;
+  border: none;
+  border-radius: 3px;
+  padding: 8px 15px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
 
-//   &:hover {
-//     background-color: $shadow-color;
-//   }
+  &:hover {
+    background-color: $shadow-color;
+  }
 
-//   &:focus {
-//     outline: none;
-//   }
-// }
+  &:focus {
+    outline: none;
+  }
+}

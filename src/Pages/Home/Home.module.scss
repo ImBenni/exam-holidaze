@@ -1,0 +1,30 @@
+@import "/src/App.scss";
+
+.homeBody {
+  background-color: $body-color;
+  margin: 0 200px;
+  padding: 1px 60px;
+  border-radius: 8px;
+  min-height: 100vh;
+  position: relative;
+  top: -8rem;
+
+  transition: margin 0.5s;
+
+  @media (max-width: 1500px) {
+    margin: 0 100px;
+  }
+  @media (max-width: 800px) {
+    margin: 0 50px;
+  }
+  @media (max-width: 500px) {
+    margin: 0 15px;
+  }
+
+  .recentVenues {
+    h3 {
+      font-size: 1.2rem;
+      margin-top: 3rem;
+    }
+  }
+}

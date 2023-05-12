@@ -6,6 +6,18 @@ header {
   align-items: center;
   padding: 0 200px;
   background-color: $body-color;
+
+  transition: padding 0.5s;
+
+  @media (max-width: 1500px) {
+    padding: 0 100px;
+  }
+  @media (max-width: 800px) {
+    padding: 0 50px;
+  }
+  @media (max-width: 500px) {
+    padding: 0 15px;
+  }
 }
 
 .logo {
@@ -14,6 +26,10 @@ header {
 
   a {
     color: $text-color;
+    
+    h1 {
+      margin: 0.8rem 0;
+    }
   }
 }
 
@@ -94,4 +110,21 @@ nav {
       background-color: rgba(0, 0, 0, 0.1);
     }
   }
+
+  // button{
+  //   display: block;
+  //   color: $text-color;
+  //   text-decoration: none;
+  //   font-weight: normal;
+  //   padding: 5px;
+  //   border-radius: 5px;
+  //   font-size: 16px;
+  //   background-color: transparent;
+  //   width: 100%;
+  //   text-align: start;
+
+  //   &:hover {
+  //     background-color: rgba(0, 0, 0, 0.1);
+  //   }
+  // }
 }
