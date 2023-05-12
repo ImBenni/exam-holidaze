@@ -2,7 +2,9 @@ import { Routes, Route} from "react-router-dom";
 import Layout from "./Components/Layout/Layout";
 import Home from "./Pages/Home";
 import Venues from "./Pages/Venues";
-import VenuePage from "./Pages/VenuePage";
+import Venue from "./Pages/Venues/Venue";
+import Register from "./Components/Auth/Register/Register";
+import Login from "./Components/Auth/Login/Login";
 
 function RouteNotFound() {
   return <div>Page not found</div>;
@@ -14,7 +16,9 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="venues" element={<Venues />} />
-        <Route path="venues/:id" element={<VenuePage />} />
+        <Route path="venues/:id" element={<Venue />} />
+        <Route path="signup" element={<Register />} />
+        <Route path="login" element={<Login />} />
         <Route path="*" element={<RouteNotFound />} />
       </Route>
     </Routes>
