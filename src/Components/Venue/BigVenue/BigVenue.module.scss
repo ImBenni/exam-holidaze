@@ -1,0 +1,139 @@
+@import "/src/App.scss";
+
+.bigVenueCards {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+}
+
+.bigVenueCard {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 49.5%;
+  overflow: hidden;
+  border-radius: 10px;
+
+  @media (max-width: 900px) {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  &:hover {
+    .cardContent {
+      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 100%);
+
+      .moreInfo {
+        display: block;
+        margin-top: 1rem;
+      }
+    }
+
+    .venueImage {
+      transform: scale(1.025);
+    }
+  }
+}
+
+.imgContent {
+  width: 100%;
+  height: 0;
+  padding-bottom: 60%;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+}
+
+.venueImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.cardContent {
+  z-index: 2;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 96%;
+  padding: 1rem;
+  color: white;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  transition: background-image 0.3s;
+  transition: width 0.3s;
+
+  @media (max-width: 1700px) {
+    width: 94.5%;
+  }
+
+  @media (max-width: 1140px) {
+    width: 92%;
+  }
+
+  @media (max-width: 900px) {
+    width: 94%;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .moreInfo {
+    display: none;
+    transition: display 0.3s;
+  }
+
+  .titleAndRating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      font-size: 1.4rem;
+    }
+
+    .ratingContent {
+      display: flex;
+
+      .ratingText {
+        color: #cccccc;
+
+        &.hasRating {
+          color: $shadow-color;
+        }
+      }
+    }
+  }
+}
+
+// Loading / Placeholder
+
+.placeholderCard {
+  background-color: #ccc;
+}
+
+.placeholderImgContent::after {
+  background-color: transparent;
+}
