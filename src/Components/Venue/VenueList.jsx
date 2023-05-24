@@ -2,9 +2,8 @@ import { Rating } from "react-simple-star-rating";
 import styles from "./VenueList.module.scss";
 
 function VenueList({ venue }) {
-
   function handleImageError(e) {
-    e.target.src = "https://via.placeholder.com/300x210";
+    e.target.src = "https://via.placeholder.com/800x610?text=Image+missing";
     e.target.onerror = null;
   }
 
@@ -12,7 +11,7 @@ function VenueList({ venue }) {
     <div className={styles.venueCard}>
       <div className={styles.imgContent}>
         <img
-          src={venue.media}
+          src={venue.media[0] || "https://via.placeholder.com/800x610?text=Image+missing"}
           alt={venue.name}
           className={styles.venueImage}
           onError={handleImageError}
@@ -30,9 +29,7 @@ function VenueList({ venue }) {
               iconsCount={1}
               fillColor={venue.rating > 0 ? "#21b47e" : "#cccccc"}
             />
-            <p className={`${styles.ratingText} ${venue.rating > 0 ? styles.hasRating : ""}`}>
-              {venue.rating}
-            </p>
+            <p className={`${styles.ratingText} ${venue.rating > 0 ? styles.hasRating : ""}`}>{venue.rating}</p>
           </div>
         </div>
         <p className={styles.subTitle}>
