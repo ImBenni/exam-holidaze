@@ -5,7 +5,7 @@
   justify-content: space-between;
   margin: 1rem 0;
 
-  @media (max-width: 900px) {
+  @media (max-width: 1125px) {
     flex-direction: column;
   }
 }
@@ -16,9 +16,9 @@
   position: relative;
   width: 49.5%;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 6px;
 
-  @media (max-width: 900px) {
+  @media (max-width: 1125px) {
     width: 100%;
     margin-bottom: 2rem;
   }
@@ -72,12 +72,16 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 96%;
+  width: 97%;
   padding: 1rem;
   color: white;
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
   transition: background-image 0.3s;
   transition: width 0.3s;
+
+  @media (max-width: 2000px) {
+    width: 95.5%;
+  }
 
   @media (max-width: 1700px) {
     width: 94.5%;

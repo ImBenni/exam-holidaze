@@ -1,5 +1,7 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
+@import "~react-date-range/dist/styles.css";
+@import "~react-date-range/dist/theme/default.css";
 
 .slick-prev:before,
 .slick-next:before {
@@ -12,6 +14,26 @@
   margin-left: -15px; //put the div in its original position
   overflow: hidden; //hide the overflow
 }
+
+.rdrDayDisabled {
+  background-color: #f0a5ab;
+
+  &:hover{
+    background-color: #f0a5ab;
+  }
+  .rdrDayNumber span {
+    color: #570c14;
+  }
+}
+
+.rdrdDay.rdrDayHovered  {
+  background-color: #d3e7db;
+}
+
+.rdrMonth{
+  width: 95%;
+}
+
 
 /* body {
   margin: 0;
