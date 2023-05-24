@@ -1,60 +1,115 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
-import { useFetch } from "../../Hooks/useFetch";
-import { Link } from 'react-router-dom';
+import { DateRange } from "react-date-range";
+import { addDays } from "date-fns";
+import { useCreateBooking } from "../../Hooks/useBook";
 
-function BookingForm() {
-  const [venues, isLoading, isError] = useFetch("/venues");
-  const isLoggedIn = !!localStorage.getItem("accessToken");
-  const { id } = useParams();
-  const venue = venues.find((p) => p.id === id);
+import styles from "../Venue/VenuePage/VenuePage.module.scss";
+import { Button, TextField, Alert } from "@mui/material";
 
-  const [bookingData, setBookingData] = useState({
-    dateFrom: "",
-    dateTo: "",
-    guests: "",
-    venueId: id,
-  });
+function Booking({ venue, id }) {
+  const token = localStorage.getItem("accessToken");
+  const { createBooking } = useCreateBooking();
+  const [newBooking, setNewBooking] = useState({});
 
   const handleInputChange = (event) => {
-    setBookingData({
-      ...bookingData,
+    setNewBooking({
+      ...newBooking,
       [event.target.name]: event.target.value,
     });
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    // Here you will call the API to create the booking
-    // For now, let's just log the bookingData
-    console.log(bookingData);
+  const [dateRange, setDateRange] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "selection",
+      color: "#23dd99",
+    },
+  ]);
+
+  const handleSelect = (ranges) => {
+    setDateRange([ranges.selection]);
+    setNewBooking({
+      ...newBooking,
+      dateFrom: ranges.selection.startDate,
+      dateTo: ranges.selection.endDate,
+    });
   };
 
-  if (!isLoggedIn) {
-    return (
-      <div>
-        <p>You need to be logged in to book a venue. Please <Link to="/login">Log in</Link></p>
-      </div>
-    );
+  function getBookedDates(bookings) {
+    const bookedDates = [];
+    for (const booking of bookings) {
+      const startDate = new Date(booking.dateFrom);
+      const endDate = new Date(booking.dateTo);
+      for (let d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
+        bookedDates.push(new Date(d));
+      }
+    }
+    return bookedDates;
   }
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const bookingData = {
+      ...newBooking,
+      guests: Number(newBooking.guests),
+      venueId: id,
+    };
+
+    try {
+      await createBooking(bookingData);
+      setNewBooking({});
+      window.location.reload();
+    } catch (error) {
+      console.error("Failed to create booking:", error);
+    }
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Date From:
-        <input type="date" name="dateFrom" onChange={handleInputChange} required />
-      </label>
-      <label>
-        Date To:
-        <input type="date" name="dateTo" onChange={handleInputChange} required />
-      </label>
-      <label>
-        Guests:
-        <input type="number" name="guests" onChange={handleInputChange} required />
-      </label>
-      <button type="submit">Book</button>
-    </form>
+<>
+      <form onSubmit={handleSubmit}>
+        <DateRange
+          editableDateInputs={true}
+          moveRangeOnFirstSelection={false}
+          ranges={dateRange}
+          onChange={handleSelect}
+          disabledDates={getBookedDates(venue.bookings)}
+          data-testid="my-date-picker"
+          minDate={addDays(new Date(), 0)}
+          ariaLabels={{
+            dateInput: {
+              startDate: "Start Date",
+              endDate: "End Date",
+            },
+            monthPicker: "Month Picker",
+            yearPicker: "Year Picker",
+            prevButton: "Previous Button",
+            nextButton: "Next Button",
+          }}
+        />
+
+        <TextField
+          type="number"
+          name="guests"
+          label="Guests"
+          className={styles.guest}
+          inputProps={{ min: "1", max: venue ? venue.maxGuests : undefined }}
+          onChange={handleInputChange}
+          value={newBooking.guests || ""}
+          required
+        />
+        {token ? (
+          <Button type="submit" className={styles.submit} color="primary" variant="contained" size="large">
+            Create Booking
+          </Button>
+        ) : (
+          <Alert severity="info" sx={{ mb: 3 }}>
+            Please log in to create a booking.
+          </Alert>
+        )}
+      </form>
+    </>
   );
 }
 
-export default BookingForm;
+export default Booking;
