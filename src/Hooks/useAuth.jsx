@@ -6,12 +6,13 @@ export function useAuth() {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [user, setUser] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const registerUser = async (userData) => {
     try {
+      
       setIsError(false);
       setIsLoading(true);
-
       const response = await fetch(`${baseUrl}/register`, {
         method: "POST",
         headers: {
@@ -21,27 +22,26 @@ export function useAuth() {
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error. Status: ${response.status}`);
+        const errorData = await response.json();
+        throw new Error(errorData.errors[0].message);
       }
+      
+      
 
       const json = await response.json();
       setUser(json);
-
-      const profile = {
-        name: json.name,
-        avatar: json.avatar,
-        email: json.email,
-        venueManager: json.venueManager,
-      };
-      localStorage.setItem("profile", JSON.stringify(profile));
-
       setIsLoading(false);
-      return true
+      return true;
     } catch (error) {
       console.log(error);
       setIsLoading(false);
       setIsError(true);
-      return false
+      if (error.response) {
+        setErrorMessage(error.response.data.message);
+      } else {
+        setErrorMessage(error.message);
+      }
+      return false;
     }
   };
 
@@ -64,26 +64,26 @@ export function useAuth() {
 
       const json = await response.json();
 
-      setUser(json);
-      localStorage.setItem("accessToken", json.accessToken);
-
       const profile = {
         name: json.name,
         avatar: json.avatar,
         email: json.email,
         venueManager: json.venueManager,
       };
-      localStorage.setItem("profile", JSON.stringify(profile));
 
+      await localStorage.setItem("accessToken", json.accessToken);
+      await localStorage.setItem("profile", JSON.stringify(profile));
+      
+      setUser(json);
       setIsLoading(false);
-      return true
+      return true;
     } catch (error) {
       console.log(error);
       setIsLoading(false);
       setIsError(true);
-      return false
+      return false;
     }
   };
 
-  return { registerUser, loginUser, user, isLoading, isError };
+  return { registerUser, loginUser, user, isLoading, isError, errorMessage };
 }
