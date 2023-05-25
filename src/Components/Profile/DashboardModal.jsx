@@ -297,10 +297,8 @@ const DashboardModal = ({ myVenues, bookings, venueManager, profile, handleDelet
                                   </Box>
                                   <Tooltip title="Open Venue">
                                     <IconButton
-                                      onClick={(event) => {
-                                        event.stopPropagation();
-                                      }}
-                                      href={`/venues/${venue.id}`}
+                                      component={Link}
+                                      to={`/venues/${venue.id}`}
                                       color="info"
                                       size="small"
                                       name="openVenue"
@@ -450,7 +448,8 @@ const DashboardModal = ({ myVenues, bookings, venueManager, profile, handleDelet
                           </DialogContent>
                           <DialogActions>
                             <Button onClick={handleDialogClose}>Cancel</Button>
-                            <Button name="confirmDelete"
+                            <Button
+                              name="confirmDelete"
                               onClick={() => {
                                 handleDeleteVenue(venueId);
                                 handleDialogClose();

@@ -7,8 +7,8 @@ import styles from "./Venues.module.scss";
 import { LinearProgress, Button, Box } from "@mui/material";
 
 function Venue() {
-  const [limit, setLimit] = useState(50);
-  const [venues, isLoading] = useVenue(0, limit);
+
+  const [venues, isLoading] = useVenue(0, 0);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortedVenues, setSortedVenues] = useState([]);
 
@@ -18,9 +18,6 @@ function Venue() {
 
   const filteredVenues = sortedVenues.filter((venue) => venue.name.toLowerCase().includes(searchQuery.toLowerCase()));
 
-  const loadMore = () => {
-    setLimit((prevLimit) => prevLimit + 50);
-  };
 
   if (isLoading) {
     return (
@@ -46,11 +43,6 @@ function Venue() {
             </Link>
           ))}
         </div>
-        <Box display="flex" justifyContent="center" marginTop={2}>
-          <Button size="large" variant="contained" onClick={loadMore} sx={{ marginBottom: 6 }}>
-            Show More
-          </Button>
-        </Box>
       </section>
     </>
   );
