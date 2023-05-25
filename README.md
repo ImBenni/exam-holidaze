@@ -1,3 +1,10 @@
+
+# Holidaze Exam
+## By yours truly, Benni
+[![Netlify Status](https://api.netlify.com/api/v1/badges/09e1e6cc-2be9-4252-a823-a463ef7b6f88/deploy-status)](https://app.netlify.com/sites/benni-holidaze/deploys)
+
+![Gannt Sheet](https://trello.com/1/cards/646f731a84ef8e044e3f38c3/attachments/646f73269a8ecd23be8bd5e3/download/Screenshot_59.png)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
