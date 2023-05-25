@@ -1,0 +1,30 @@
+@import "/src/App.scss";
+
+.homeBody {
+  background-color: $body-color;
+  margin: 0 450px;
+  padding: 20px 60px;
+  padding-bottom: 3rem;
+  border-radius: 8px;
+  position: relative;
+  top: -8rem;
+
+  transition: margin 0.5s;
+
+  @media (max-width: 2200px) {
+    padding: 20px 45px 3rem 45px;
+    margin: 30px 300px;
+  }
+
+  @media (max-width: 1500px) {
+    padding: 10px 45px 3rem 45px;
+    margin: 20px 200px;
+  }
+  @media (max-width: 900px) {
+    margin: 0 50px;
+    padding-bottom: 1rem;
+  }
+  @media (max-width: 500px) {
+    margin: 0 15px;
+  }
+}

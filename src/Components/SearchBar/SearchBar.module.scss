@@ -1,0 +1,88 @@
+@import "/src/App.scss";
+
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 2rem 0;
+}
+
+.searchInput {
+  width: 50%;
+  padding: 10px;
+  position: relative;
+  font-size: 16px;
+  border-radius: 15px;
+  border: 2px solid $primary-color;
+  outline: none;
+  transition: all 0.3s ease;
+
+  &:focus {
+    border-color: darken($primary-color, 10%);
+    box-shadow: 0 0 10px rgba($primary-color, 0.2);
+  }
+}
+
+.searchWindow {
+  background-color: #fff;
+  width: 39%;
+  padding: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+  position: absolute;
+  margin-top: 45px;
+  z-index: 80;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 992px) {
+  .searchInput {
+    width: 80%;
+  }
+  .searchWindow {
+    width: 68%;
+  }
+}
+
+.searchVenue {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 70px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  text-decoration: none;
+  color: $text-color;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: lighten($primary-color, 55%);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  img {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+    object-fit: cover;
+  }
+
+  .searchTitle {
+    margin: 0 20px;
+    h3 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    p {
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 0.8rem;
+      margin: 0;
+    }
+  }
+}

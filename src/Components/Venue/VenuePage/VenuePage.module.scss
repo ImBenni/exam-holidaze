@@ -1,0 +1,217 @@
+@import "/src/App.scss";
+
+.venuePage {
+  .imgCont {
+
+    div {
+      padding: 0;
+    }
+
+    img {
+      width: 100%;
+      height: 800px;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: height 0.5s;
+    }
+
+    @media (max-width: 2200px) {
+      img {
+        height: 700px;
+      }
+    }
+
+    @media (max-width: 1500px) {
+      img {
+        height: 500px;
+      }
+    }
+
+    @media (max-width: 1400px) {
+      img {
+        height: 500px;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      img {
+        height: 370px;
+      }
+    }
+
+    @media (max-width: 1000px) {
+      img {
+        height: 280px;
+      }
+    }
+  }
+  a {
+    color: black;
+  }
+  .topCont {
+    display: flex;
+    justify-content: space-between;
+
+    .textCont {
+      span {
+        color: rgba(0, 0, 0, 0.6);
+        font-style: italic;
+      }
+
+      h3 {
+        margin: 30px 0 4px 0;
+      }
+
+      p {
+        margin: 0;
+        font-style: italic;
+      }
+    }
+
+    .topRight {
+      display: flex;
+      flex-direction: column;
+
+      .ratingCont {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .ownerCont {
+        text-align: flex-end;
+
+        span {
+          color: rgba(0, 0, 0, 0.6);
+          font-style: italic;
+        }
+
+        .profile {
+          margin-top: 10px;
+          display: flex;
+          justify-content: center;
+
+          h3 {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  .bottomCont {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+    .infoCont {
+      transition: width 0.5s;
+      width: 65%;
+
+      p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .metaCont {
+        display: flex;
+
+        .row {
+          margin-right: 10px;
+
+          .iconWrapper {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            i {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 15px;
+              width: 15px;
+              margin-right: 5px;
+              padding: 10px;
+              border-radius: 100%;
+            }
+
+            .true {
+              background-color: $primary-color;
+            }
+
+            .false {
+              background-color: rgb(233, 72, 72);
+            }
+          }
+        }
+      }
+    }
+
+    .bookingCont {
+      transition: width 0.5s;
+      width: 450px;
+      display: flex;
+      justify-content: flex-end;
+      padding-bottom: 35px;
+
+      .bookingCard {
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        margin-top: 1em;
+        border-radius: 8px;
+        padding: 0 20px;
+
+        .row {
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          padding: 20px 0;
+
+          &:not(:last-child) {
+            border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+          }
+
+          p {
+            margin: 0 5px;
+          }
+        }
+      }
+
+      h3 {
+        margin: 5px 0;
+      }
+
+      form {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+
+        .guest {
+          margin: 20px 0;
+        }
+
+        .submit {
+          margin-bottom: 25px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1000px) {
+    .bottomCont {
+      flex-direction: column;
+
+      .infoCont {
+        width: 100%;
+      }
+      .bookingCont {
+        justify-content: center;
+        width: 100%;
+        margin-top: 15px;
+
+        .bookingCard {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
