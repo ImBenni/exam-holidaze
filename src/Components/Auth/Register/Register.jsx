@@ -80,7 +80,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { name, email, avatar, password, venueManager } = formData;
+    const { name, email, avatar, password } = formData;
     if (!name || !email || !avatar || !password) {
       setErrors({
         nameError: !name,

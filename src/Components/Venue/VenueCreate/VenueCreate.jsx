@@ -32,7 +32,6 @@ const StyledRating = styled(Rating)({
 function VenueCreate() {
   const storedProfile = JSON.parse(localStorage.getItem("profile"));
   const { createVenue, isError } = useVenueActions();
-  const [setRating] = useState(0);
   const navigate = useNavigate();
   const [venueData, setVenueData] = useState({
     name: "",
