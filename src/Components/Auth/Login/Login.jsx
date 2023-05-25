@@ -100,7 +100,7 @@ function Login() {
             Invalid Email or Password!
           </Alert>
         )}
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1, width: 400 }}>
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1, width: { xs: "100%", sm: 400 } }}>
           <Box sx={{ display: "flex", alignItems: "flex-end" }}>
             <EmailIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
             <TextField
@@ -156,15 +156,3 @@ function Login() {
 }
 
 export default Login;
-
-// const handleSubmit = async (e) => {
-//   e.preventDefault();
-//   try {
-//     const registered = await registerUser(formData);
-//     if (registered) {
-//       navigate("/login");
-//     }
-//   } catch (error) {
-//     console.error("Error during registration:", error);
-//   }
-// };
