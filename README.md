@@ -4,6 +4,15 @@ By yours truly, Benni
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/09e1e6cc-2be9-4252-a823-a463ef7b6f88/deploy-status)](https://app.netlify.com/sites/benni-holidaze/deploys)
 
+Welcome to the best Venue Booking site (self-proclaimed) that you can find ANYWHERE !!
+
+Here you can book for the most amazing and experiencefull (thats a new word now) venues in the world.
+Not only that, you can make an account and start to make your own venues easily.
+
+Being on this page is an experience on its own :)
+
+
+
 ![Gannt Sheet](https://cdn.discordapp.com/attachments/1040397419931779072/1111304117869088818/Screenshot_59.png)
 
 # Getting Started with Create React App
