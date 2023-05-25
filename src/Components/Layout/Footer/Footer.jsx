@@ -1,4 +1,3 @@
-import styles from "./Footer.module.scss";
 import { Box, Container, Typography, Link } from "@mui/material/";
 
 function Copyright() {
