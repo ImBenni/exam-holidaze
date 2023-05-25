@@ -4,7 +4,7 @@ import VenueList from "../../Components/Venue/VenueList";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import { useVenue } from "../../Hooks/useFetch";
 import styles from "./Venues.module.scss";
-import { LinearProgress, Button, Box } from "@mui/material";
+import { LinearProgress } from "@mui/material";
 
 function Venue() {
 
