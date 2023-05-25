@@ -73,3 +73,27 @@ export function useCreateBooking() {
 
   return { createBooking };
 }
+
+export async function deleteBooking(bookingId) {
+  const token = localStorage.getItem("accessToken");
+
+  try {
+    const response = await fetch(`${baseUrl}/${bookingId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return true;
+  } catch (error) {
+    console.log(error);
+  }
+
+  return { deleteBooking };
+}

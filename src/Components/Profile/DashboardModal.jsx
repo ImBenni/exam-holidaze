@@ -31,6 +31,8 @@ import LinkIcon from "@mui/icons-material/Link";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import GroupIcon from "@mui/icons-material/Group";
+import DoDisturbOnOutlinedIcon from "@mui/icons-material/DoDisturbOnOutlined";
+import { deleteBooking } from "../../Hooks/useBook";
 
 const DashboardModal = ({ myVenues, bookings, venueManager, profile, handleDeleteVenue }) => {
   const User = handleDeleteVenue; // This is used when Other Users access the Profile (it will hide certain elements)
@@ -67,6 +69,27 @@ const DashboardModal = ({ myVenues, bookings, venueManager, profile, handleDelet
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const [openBookDialog, setOpenBookDialog] = useState(false);
+  const [bookingId, setbookingId] = useState(null);
+
+  const handleBookDialogOpen = (id) => {
+    setOpenBookDialog(true);
+    setbookingId(id);
+  };
+  const handleBookDialogClose = () => {
+    setOpenBookDialog(false);
+    setbookingId(null);
+  };
+
+  const handleCancelBooking = async (bookingId) => {
+    try {
+      await deleteBooking(bookingId);
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getBookingStatus = (startDate, endDate) => {
@@ -119,6 +142,33 @@ const DashboardModal = ({ myVenues, bookings, venueManager, profile, handleDelet
   }
   return (
     <>
+      <Dialog
+        open={openBookDialog}
+        onClose={handleBookDialogClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Are you sure you want to cancel this booking?"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Cancelling this booking is a permanent action and cannot be undone.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleBookDialogClose}>Cancel</Button>
+          <Button
+            name="confirmDelete"
+            onClick={() => {
+              handleCancelBooking(bookingId);
+              handleBookDialogClose();
+            }}
+            color="error"
+            autoFocus
+          >
+            Cancel
+          </Button>
+        </DialogActions>
+      </Dialog>
       <Grid item xs={12} md={4} order={{ xs: 3, md: 3 }} className={styles.right}>
         <Box sx={{ p: 2 }}>
           <Box sx={{ width: "100%" }}>
@@ -135,17 +185,7 @@ const DashboardModal = ({ myVenues, bookings, venueManager, profile, handleDelet
                   <Grid container spacing={2}>
                     {bookings.length > 0 ? (
                       bookings.map((booking, index) => (
-                        <Grid
-                          item
-                          xs={12}
-                          sm={6}
-                          md={4}
-                          lg={3}
-                          key={index}
-                          component={Link}
-                          to={`/venues/${booking.venue.id}`}
-                          sx={{ textDecoration: "none" }}
-                        >
+                        <Grid item xs={12} sm={6} md={4} lg={3} key={index} sx={{ textDecoration: "none" }}>
                           <Card
                             sx={{
                               boxShadow: 2,
@@ -158,20 +198,8 @@ const DashboardModal = ({ myVenues, bookings, venueManager, profile, handleDelet
                           >
                             <CardMedia sx={{ height: 200 }} image={booking.venue.media[0]} title={booking.venue.name} />
                             <CardContent>
-                              <Box
-                                sx={{
-                                  display: "flex",
-                                  flexDirection: "column",
-                                  justifyContent: "space-between",
-                                }}
-                              >
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    justifyContent: "space-between",
-                                    alignItems: "start",
-                                  }}
-                                >
+                              <Grid container spacing={2} alignItems="center">
+                                <Grid item xs={12} sm={8} md={9}>
                                   <Box>
                                     <Typography
                                       variant="h6"
@@ -184,6 +212,7 @@ const DashboardModal = ({ myVenues, bookings, venueManager, profile, handleDelet
                                     >
                                       {booking.venue.name}
                                     </Typography>
+
                                     <Typography
                                       variant="body1"
                                       color="text.secondary"
@@ -192,12 +221,42 @@ const DashboardModal = ({ myVenues, bookings, venueManager, profile, handleDelet
                                       {booking.venue.location.city}, {booking.venue.location.country}
                                     </Typography>
                                   </Box>
-                                </Box>
-                                <Typography variant="body2" color="text.secondary">
-                                  {new Date(booking.dateFrom).toLocaleDateString()} -{" "}
-                                  {new Date(booking.dateTo).toLocaleDateString()}
-                                </Typography>
-                              </Box>
+                                </Grid>
+                                <Grid item xs={12} sm={4} md={3}>
+                                  <Box sx={{ display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
+                                    <Tooltip title="Open Venue">
+                                      <IconButton
+                                        component={Link}
+                                        to={`/venues/${booking.venue.id}`}
+                                        color="info"
+                                        size="small"
+                                        name="openVenue"
+                                      >
+                                        <LinkIcon />
+                                      </IconButton>
+                                    </Tooltip>
+                                    <Tooltip title="Cancel Booking">
+                                      <IconButton
+                                        onClick={(event) => {
+                                          event.stopPropagation();
+                                          handleBookDialogOpen(booking.id);
+                                        }}
+                                        color="error"
+                                        size="small"
+                                        name="cancelBooking"
+                                      >
+                                        <DoDisturbOnOutlinedIcon />
+                                      </IconButton>
+                                    </Tooltip>
+                                  </Box>
+                                </Grid>
+                                <Grid item xs={12}>
+                                  <Typography variant="body2" color="text.secondary">
+                                    {new Date(booking.dateFrom).toLocaleDateString()} -{" "}
+                                    {new Date(booking.dateTo).toLocaleDateString()}
+                                  </Typography>
+                                </Grid>
+                              </Grid>
                             </CardContent>
                             <CardActions
                               sx={{
@@ -206,6 +265,7 @@ const DashboardModal = ({ myVenues, bookings, venueManager, profile, handleDelet
                                 alignItems: "start",
                               }}
                             >
+                              {" "}
                               <Chip
                                 label={getBookingStatus(booking.dateFrom, booking.dateTo).status}
                                 color={getBookingStatus(booking.dateFrom, booking.dateTo).color}
