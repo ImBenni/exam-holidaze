@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useOtherProfile } from "../../../Hooks/useFetch";
 
 import AvatarSection from "../AvatarSection";
@@ -6,7 +6,7 @@ import InfoSection from "../InfoSection";
 import DashboardModal from "../DashboardModal";
 
 import styles from "../ProfileComp.module.scss";
-import { Grid, LinearProgress, Typography, Box, Container, Alert } from "@mui/material/";
+import { Grid, LinearProgress, Typography, Box, Container, Alert, Button } from "@mui/material/";
 
 const ProfileOther = () => {
   const profileName = useParams();
@@ -21,8 +21,10 @@ const ProfileOther = () => {
     return (
       <Container maxWidth="lg" sx={{ mt: 5 }}>
         <Box mt={2} p={10} bgcolor="background.paper" boxShadow={3} borderRadius={5} textAlign={"center"}>
-          <Typography variant="body1">Couldn't find user with the username:</Typography>
-          <Typography variant="h5">{profileName.profileName}</Typography>
+          <Typography variant="body1">Either couldn't find the user, or you haven't logged in:</Typography>
+          <Button sx={{mt: 2}} component={Link} to="/login" variant="contained">
+            Click here to log in
+          </Button>
         </Box>
       </Container>
     );
