@@ -76,16 +76,7 @@ function Booking({ venue, id }) {
           disabledDates={getBookedDates(venue.bookings)}
           data-testid="my-date-picker"
           minDate={addDays(new Date(), 0)}
-          ariaLabels={{
-            dateInput: {
-              startDate: "Start Date",
-              endDate: "End Date",
-            },
-            monthPicker: "Month Picker",
-            yearPicker: "Year Picker",
-            prevButton: "Previous Button",
-            nextButton: "Next Button",
-          }}
+        
         />
 
         <TextField
