@@ -1,99 +1,81 @@
-
 # Holidaze Exam
-By yours truly, Benni
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/09e1e6cc-2be9-4252-a823-a463ef7b6f88/deploy-status)](https://app.netlify.com/sites/benni-holidaze/deploys)
-
-Welcome to the best Venue Booking site (self-proclaimed) that you can find ANYWHERE !!
-
-Here you can book for the most amazing and experiencefull (thats a new word now) venues in the world.
-Not only that, you can make an account and start to make your own venues easily.
-
-Being on this page is an experience on its own :)
-
-
-
+![homepage](https://media.discordapp.net/attachments/1040397419931779072/1115615931301904414/image.png?width=961&height=674)
 ![Gannt Sheet](https://cdn.discordapp.com/attachments/1040397419931779072/1111304117869088818/Screenshot_59.png)
 
-# Getting Started with Create React App
+Holidaze is a web application designed to make the process of booking accommodations and activities during the holidays easy and intuitive.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+Holidaze is an online platform designed to provide an easy and seamless experience for booking hotels and accommodations. It aims to provide users with a diverse selection of properties, varying from economical to luxurious, based on user preference.
 
-In the project directory, you can run:
+The core functionalities of the application include:
 
-### `npm start`
+- User registration and authentication
+- Search and filter functionality for hotels and accommodations
+- Detailed view of each property including facilities, location, and availability
+- Booking functionality with user-selected dates
+- Admin section to manage hotels, bookings, and enquires
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The project integrates a smooth user interface with solid back-end logic to ensure data accuracy and secure transactions. The website is mobile-responsive and provides a seamless experience across various devices.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Built With
 
-### `npm test`
+You can list a the tech stack that you've used over here
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [React.js](https://reactjs.org/)
+- [MUI](https://mui.com/core/)
 
-### `npm run build`
+## Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installing
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repo:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+git clone https://github.com/ImBenni/exam-holidaze.git
+```
 
-### `npm run eject`
+2. Install the dependencies:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Running
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Here is where you detail how to run the app. It typically involves the commands you'd need to run to start the project e.g.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+To run the app, run the following commands:
 
-## Cypress Testing
+```bash
+npm run start
+```
+
+### Cypress Testing
 Make sure the page is already opened locally by doing
-### `npm start`
+```bash
+npm run start
+```
 
 then you can initiate cypress
-
-### `npm run e2e`
+```bash
+npm run e2e
+```
 
 If you want to rather run both at once, you can do that by doing:
+```bash
+npm run start:e2e
+```
 
-### `npm run start:e2e`
 
-## Learn More
+## Contributing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Contributions are welcome. Please fork this repository and create a pull request if you have something you want to add or change.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contact
 
-### Code Splitting
+Feel free to contact me at:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+[My Twitter page](https://twitter.com/IssaMeBenni)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
