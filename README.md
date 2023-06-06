@@ -21,8 +21,6 @@ The project integrates a smooth user interface with solid back-end logic to ensu
 
 ## Built With
 
-You can list a the tech stack that you've used over here
-
 - [React.js](https://reactjs.org/)
 - [MUI](https://mui.com/core/)
 
